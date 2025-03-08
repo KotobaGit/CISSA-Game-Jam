@@ -1,0 +1,57 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] private GameObject PlayerObj; //this is where we set the OBJECT of the player
+    [SerializeField] private Rigidbody2D PlayerRb; //this is the rigid body of the player
+
+    [SerializeField] private Transform LookTransform;
+
+    public float moveSpeed = 1.0f; //public incase we want to add things that slow or speed up the player in other scripts
+    
+    private Vector2 inputMoveDirection;
+    private Vector3 inputLookDirection;
+
+    //you can add more actions here
+    private InputAction moveAction;
+    private InputAction lookAction;
+
+    private void Start()
+    {
+        //these are set in [edit > project settings > input system package]
+
+        moveAction = InputSystem.actions.FindAction("Move");
+        lookAction = InputSystem.actions.FindAction("Look");
+
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void TakeInput()
+    {
+        inputMoveDirection =  moveAction.ReadValue<Vector2>().normalized;
+        Vector3 pointerPos = Camera.main.ScreenToWorldPoint(lookAction.ReadValue<Vector2>());
+        inputLookDirection = (Vector2)(pointerPos - transform.position ).normalized;
+    }
+
+    private void PlayerAim()
+    {
+        transform.localScale = new Vector3((Mathf.Sign(inputLookDirection.x)), 1f, 1f);
+        LookTransform.right = inputLookDirection * (Mathf.Sign(inputLookDirection.x));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        TakeInput();
+        PlayerAim();
+    }
+
+    // Fixed Update is called multiple times in a frame
+    // IF ITS NOT USING UNITY PHYSICS DON'T PUT IT HERE
+    private void FixedUpdate()
+    {
+        PlayerRb.linearVelocity = inputMoveDirection*moveSpeed;
+    }
+}
