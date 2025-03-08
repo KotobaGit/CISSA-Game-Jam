@@ -340,7 +340,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &661798715
+--- !u!43 &681885615
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -556,7 +556,7 @@ MonoBehaviour:
     rid: 587825492256882763
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 661798715}
+    m_Mesh: {fileID: 681885615}
     m_LocalBounds:
       m_Center: {x: 0, y: 0.12487793, z: 0}
       m_Extent: {x: 0.43077087, y: 0.37355042, z: 0}
@@ -697,6 +697,10 @@ PrefabInstance:
     - target: {fileID: 2492535681378967452, guid: 2383330b58a00bf44953fc18868c06f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483626824531942355, guid: 2383330b58a00bf44953fc18868c06f4, type: 3}
+      propertyPath: m_ShadowVolumeIntensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9168269856253314795, guid: 2383330b58a00bf44953fc18868c06f4, type: 3}
       propertyPath: m_Name
