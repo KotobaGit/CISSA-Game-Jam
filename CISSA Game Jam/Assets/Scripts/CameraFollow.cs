@@ -11,10 +11,6 @@ public class CameraFollow : MonoBehaviour
     public float xMax;
     public float yMin;
     public float yMax;
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
