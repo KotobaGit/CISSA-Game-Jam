@@ -6,17 +6,14 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime;
     [SerializeField] private Transform robot;
 
+    // Camera Clamp Ranges
     public float xMin;
     public float xMax;
     public float yMin;
     public float yMax;
     void Start()
     {
-        // Camera Clamp Ranges
-        yMin = 0f;
-        yMax = 0f;
-        xMin = 0f;
-        xMax = 0f;
+
     }
 
     // Update is called once per frame
