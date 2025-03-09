@@ -5,10 +5,11 @@ public class PlayerCollisionManager : MonoBehaviour
     private int buttonsPressed = 0;
     public GameObject door;
     private SpriteRenderer sr;
+    private PlayerHealthManager playerHealthManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerHealthManager = GetComponent<PlayerHealthManager>();
     }
 
     // Update is called once per frame
@@ -29,6 +30,10 @@ public class PlayerCollisionManager : MonoBehaviour
                 sr = collision.GetComponent<SpriteRenderer>();
                 sr.color = Color.green; // Sets the button's color to green
                 Destroy(door); // Removes all door GameObjects. Can be altered to perform an animation (open the door) etc. Have different gameobjects for each door in the world?
+                break;
+
+            case "ElectricWater":
+                playerHealthManager.playerTakeDamage(20); // Robot takes 20 damage when it collides with Electric Water
                 break;
 
         }
