@@ -10,6 +10,11 @@ TagManager:
   - ElectricWater
   - Door
   - SpawnRoomDoor
+  - DoorToRecRoom
+  - DoorToSpawnRoom
+  - DoorToAirlockRoom
+  - DoorToCockpitRoom
+  - DoorToGeneratorRoom
   layers:
   - Default
   - TransparentFX
@@ -17,9 +22,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemies
+  - Robot
+  - Camera
   - 
   - 
   - 
