@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisionManager : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class PlayerCollisionManager : MonoBehaviour
 
             case "ElectricWater":
                 playerHealthManager.playerTakeDamage(20); // Robot takes 20 damage when it collides with Electric Water
+                break;
+
+            case "SpawnRoomDoor":
+                SceneManager.LoadScene("Rec Room");
                 break;
 
         }

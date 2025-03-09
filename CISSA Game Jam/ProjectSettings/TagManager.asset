@@ -8,6 +8,8 @@ TagManager:
   - RobotTorchLight
   - Button
   - ElectricWater
+  - Door
+  - SpawnRoomDoor
   layers:
   - Default
   - TransparentFX
