@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 7128016403499544985}
   - component: {fileID: 8412137348372882439}
   - component: {fileID: 8012354144537550434}
-  - component: {fileID: 4341126858146685884}
   m_Layer: 0
   m_Name: RobotPlaceholder
   m_TagString: Robot
@@ -409,7 +408,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4178004657167147649, guid: b9c638bd17e0f2848abd033d6f8b0038, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -574,18 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd128eed1f789a54a988af290c93c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
---- !u!114 &4341126858146685884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9168269856253314795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c95faf66520ca2f47bdd66f809a1bd08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  generatorBarrier1: {fileID: 0}
+  generatorBarrier2: {fileID: 0}
   healthBar: {fileID: 0}
-  playerHealth: 100
+  playerHealth: 0
