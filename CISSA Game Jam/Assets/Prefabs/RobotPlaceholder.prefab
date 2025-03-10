@@ -145,7 +145,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 1
+  m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -257,11 +257,11 @@ MonoBehaviour:
   m_Color: {r: 0.9716981, g: 0.9495738, b: 0.71960664, a: 1}
   m_Intensity: 0.34
   m_LightVolumeIntensity: 1
-  m_LightVolumeEnabled: 1
+  m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 1
+  m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3

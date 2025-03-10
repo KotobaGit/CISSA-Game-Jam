@@ -6,13 +6,19 @@ public class AngelMoveScript : MonoBehaviour
     public float angelSmoothTime; // How fast the angel will smooth to the robot
     private Vector3 angelVelocity = Vector3.zero;
     public float angelSpeed;
+    [SerializeField] private Animator angelAnimator;
     Rigidbody2D rb;
-    public GameObject robot;
-    public GameObject robotTorch;
+    private GameObject robot;
+    private GameObject robotTorch;
     private bool IsRobotInLight;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        robot = GameObject.Find("RobotPlaceholder");
+        robotTorch = GameObject.Find("RobotPlaceholder/Aiming Placeholder/Torch/RobotTorchLight");
+
         rb = GetComponent<Rigidbody2D>();
         IsRobotInLight = false;
     }
@@ -30,13 +36,22 @@ public class AngelMoveScript : MonoBehaviour
             Vector3 direction = (targetpos - transform.position).normalized; // Gets the direction to move in as a Vector3
             rb.linearVelocity = direction * angelSpeed; // Adds velocity to the angel in the direction of the player at a rate of angelSpeed
         }
+        
+        if (rb.linearVelocity.magnitude != 0f)
+        {
+            angelAnimator.SetBool("Moving", true);
+        }
+        else
+        {
+            angelAnimator.SetBool("Moving", false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision) // When the angel collides with a trigger with the tag RobotTorch Light, will set IsRobotInLight to true
     {
         if (collision.CompareTag("RobotTorchLight"))
             {
             IsRobotInLight = true;
-            Debug.Log("Hit torch");
+            angelAnimator.SetBool("Awake", false);
         }
 
     }
@@ -45,6 +60,7 @@ public class AngelMoveScript : MonoBehaviour
         if (other.CompareTag("RobotTorchLight"))
             {
             IsRobotInLight = false;
+            angelAnimator.SetBool("Awake", true);
         }
     }
 }

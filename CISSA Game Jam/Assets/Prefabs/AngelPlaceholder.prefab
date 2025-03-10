@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7318123050897551488}
   - component: {fileID: 5543714913172717101}
   - component: {fileID: 7760824681651609003}
-  - component: {fileID: 6660039083812055924}
+  - component: {fileID: 6275601633734186082}
+  - component: {fileID: 4936722661338292595}
   m_Layer: 6
   m_Name: AngelPlaceholder
   m_TagString: Untagged
@@ -58,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: b2e9f68f6a024f84297ad29e0d31e990, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3337038689812066966, guid: 912b0cc5b9f5c6c47b198aff55fc7a8f, type: 3}
+  m_Sprite: {fileID: 5529229194528994760, guid: eeade1cd0912e7f4aa795ab351829411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,9 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angelSmoothTime: 2
-  angelSpeed: 0.35
-  robot: {fileID: 0}
-  robotTorch: {fileID: 0}
+  angelSpeed: 2
+  angelAnimator: {fileID: 6275601633734186082}
 --- !u!50 &7760824681651609003
 Rigidbody2D:
   serializedVersion: 5
@@ -133,8 +133,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6660039083812055924
-BoxCollider2D:
+--- !u!95 &6275601633734186082
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042542453134330734}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 973fbe6757b3f0d4ba87af588e385988, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &4936722661338292595
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,15 +189,6 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0833334, y: 1.3333334}
-    newSize: {x: 1.0833334, y: 1.3333334}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.54, y: 1.3333334}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0026587844, y: -0.11166784}
+  m_Size: {x: 0.6199161, y: 0.9422191}
+  m_Direction: 0
