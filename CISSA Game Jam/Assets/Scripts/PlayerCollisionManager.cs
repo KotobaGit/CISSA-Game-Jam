@@ -115,7 +115,13 @@ public class PlayerCollisionManager : MonoBehaviour
 
             case "DoorToAirlockRoom":
                 {
-                    SceneManager.LoadScene("Airlock Room");
+                    SceneManager.LoadScene("Air Lock Room");
+                }
+                break;
+
+            case "SpawnDoor":
+                {
+                    SceneManager.LoadScene("Rec Room");
                 }
                 break;
 
