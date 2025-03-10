@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool NoInput = false;
 
     [SerializeField] private GameObject PlayerObj; //this is where we set the OBJECT of the player
     [SerializeField] private Rigidbody2D PlayerRb; //this is the rigid body of the player
@@ -41,9 +42,15 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void TakeInput()
     {
+        
         inputMoveDirection =  moveAction.ReadValue<Vector2>().normalized;
         Vector3 pointerPos = Camera.main.ScreenToWorldPoint(lookAction.ReadValue<Vector2>());
         inputLookDirection = (Vector2)(pointerPos - transform.position ).normalized;
+        if (NoInput)
+        {
+            inputMoveDirection = Vector2.zero;
+            inputLookDirection = Vector2.zero;
+        }
     }
 
     private void PlayerAim()
