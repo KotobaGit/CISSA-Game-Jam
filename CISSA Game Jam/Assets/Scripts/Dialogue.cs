@@ -14,7 +14,13 @@ public class Dialogue : MonoBehaviour
 
     // Start is called before the first frame update
 
-
+    private void Awake()
+    {
+        if (PlayerObj == null)
+        {
+            PlayerObj = GameObject.Find("RobotPlaceholder");
+        }
+    }
     void Start()
     {
          StartDialogue();

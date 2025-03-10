@@ -23,7 +23,7 @@ public class DialogueManagerScript : MonoBehaviour
         }
         if (dialogueBox == null)
         {
-            dialogueBox = GameObject.Find("")
+            dialogueBox = GameObject.Find("");
         }
     }
 
