@@ -5,6 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
+    [SerializeField] private GameObject PlayerObj;
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
@@ -17,6 +18,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
          StartDialogue();
+         
     }
 
     // Update is called once per frame
@@ -33,6 +35,11 @@ public class Dialogue : MonoBehaviour
             }
     }
 
+    public void FreezePlayer(bool StopPlayer)
+    {
+        PlayerObj.GetComponent<PlayerMovement>().NoInput = StopPlayer;
+    }
+
     public void StartDialogue()
     {
         transform.localScale = new Vector3(0.61f, 0.67f, 0.67f);
@@ -40,6 +47,7 @@ public class Dialogue : MonoBehaviour
         textComponent.text = string.Empty;
         index = 0;
         StartCoroutine(TypeLine());
+        //if FREEZE TEXT IS TRUE
     }
 
     IEnumerator TypeLine()
@@ -62,6 +70,8 @@ public class Dialogue : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(0, 0, 0);
+            FreezePlayer(false);
+            //unfreeze player
         }
     }
 }

@@ -9,7 +9,6 @@ public class ObjectiveTracker : MonoBehaviour
     [SerializeField] private GameObject HiddenObjectiveTick;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     private void Start()
     {
         for (int i = 0; i < ObjectivesAmount; i++) //at the start of every scene

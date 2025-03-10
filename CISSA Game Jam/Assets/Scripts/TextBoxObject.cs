@@ -3,6 +3,7 @@ using UnityEngine;
 public class TextBoxObject : MonoBehaviour
 {
     [SerializeField] private GameObject DialogueBoxObj;
+    [SerializeField] private bool freezeWhileReading;
     public string[] TextLines;
 
     private string[] lines;
@@ -21,5 +22,6 @@ public class TextBoxObject : MonoBehaviour
     {
         DialogueBoxObj.GetComponent<Dialogue>().lines = TextLines;
         DialogueBoxObj.GetComponent<Dialogue>().StartDialogue();
+        DialogueBoxObj.GetComponent<Dialogue>().FreezePlayer(freezeWhileReading);
     }
 }
