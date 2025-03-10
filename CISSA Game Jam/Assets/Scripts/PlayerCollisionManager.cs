@@ -15,17 +15,16 @@ public class PlayerCollisionManager : MonoBehaviour
     public Transform healthBar;
     public TextMeshProUGUI hudTextComponent;
     [SerializeField] private float playerHealth = 99f; // Players health
+    [SerializeField] private ObjectiveTracker ObjectivesScript;
 
     private bool canLeaveRoom = false;
     private bool foundAutopilotPassword = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if (healthBar == null || hudTextComponent == null)
-        {
             healthBar = GameObject.Find("UI/Health/Health Bar").transform;
             hudTextComponent = GameObject.Find("UI/Health/Health Num").GetComponent<TextMeshProUGUI>();
-        }
+            ObjectivesScript = GameObject.Find("UI/ObjectiveTracker").GetComponent<ObjectiveTracker>();
     }
 
     // Update is called once per frame
@@ -64,10 +63,13 @@ public class PlayerCollisionManager : MonoBehaviour
             case "AutopilotPassword": // When the player finds the autopilot password note, sets foundAutopilotPassword to true. Add dialogue here
                 foundAutopilotPassword = true;
                 GameObject.Find("Passkey Text").GetComponent<TextBoxObject>().SendText(); // Runs the passkey dialogue
+
                 break;
 
             case "GenComputer":
                 canLeaveRoom = true;  // Player can interact with the door to the rec room. Add checkmark to journal here
+                //OBJECTIVE 2
+                ObjectivesScript.TickObjective(1, true);
                 GameObject.Find("GenComputer Text").GetComponent<TextBoxObject>().SendText();
                 break;
 
@@ -80,6 +82,8 @@ public class PlayerCollisionManager : MonoBehaviour
                 {
                     GameObject.Find("Computer Text 2").GetComponent<TextBoxObject>().SendText(); // Runs computer text 2 if player found password
                     canLeaveRoom = true; // Player can leave the room if they interact with the autopilot computer after they have found the password on the note. Add checkmark to journal here
+                    //OBJECTIVE 3
+                    ObjectivesScript.TickObjective(2, true);
                 }
                 break;
 
