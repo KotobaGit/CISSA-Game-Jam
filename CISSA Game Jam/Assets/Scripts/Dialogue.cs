@@ -35,6 +35,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        transform.localScale = new Vector3(0.61f, 0.67f, 0.67f);
         StopAllCoroutines();
         textComponent.text = string.Empty;
         index = 0;
@@ -60,7 +61,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            transform.localScale = new Vector3(0, 0, 0);
         }
     }
 }

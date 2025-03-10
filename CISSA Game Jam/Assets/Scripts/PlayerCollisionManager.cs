@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,19 +12,28 @@ public class PlayerCollisionManager : MonoBehaviour
     public GameObject generatorBarrier2;
     private SpriteRenderer sr;
     public Image healthBar;
-    private float playerHealth = 100f; // Players health
+    public TextMeshProUGUI hudTextComponent;
+    private float playerHealth = 99f; // Players health
 
     private bool canLeaveRoom = false;
     private bool foundAutopilotPassword = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-
+        if (healthBar == null || hudTextComponent == null)
+        {
+            healthBar = GameObject.Find("UI/Health/Health Bar").GetComponent<Image>();
+            hudTextComponent = GameObject.Find("UI/Health/Health Num").GetComponent<TextMeshProUGUI>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        healthBar.fillAmount = playerHealth / 99f;
+        hudTextComponent.text = (Mathf.RoundToInt(playerHealth)).ToString();
+
+
         if (buttonsPressed == buttonsInRoom) // Destroys the 2 barriers in the generator room when all buttons are pressed
         {
             Destroy(generatorBarrier1);
@@ -113,6 +123,6 @@ public class PlayerCollisionManager : MonoBehaviour
     public void PlayerTakeDamage(float damage) // Use this function to make the player take a certain amount of damage
     {
         playerHealth -= damage;
-        healthBar.fillAmount = playerHealth / 100f;
+        
     }
 }
