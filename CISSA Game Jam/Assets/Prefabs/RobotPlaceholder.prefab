@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 8412137348372882439}
   - component: {fileID: 323051843365498025}
   - component: {fileID: 2005514975154614119}
+  - component: {fileID: 3748531589658425433}
   m_Layer: 0
   m_Name: RobotPlaceholder
   m_TagString: Robot
@@ -460,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a59970feae9f64f8adf1b62cbcc191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NoInput: 0
   PlayerObj: {fileID: 9168269856253314795}
   PlayerRb: {fileID: 7383442436023622187}
   LookTransform: {fileID: 6492773917767531722}
@@ -617,3 +619,25 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   hudTextComponent: {fileID: 0}
   playerHealth: 99
+--- !u!95 &3748531589658425433
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168269856253314795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
