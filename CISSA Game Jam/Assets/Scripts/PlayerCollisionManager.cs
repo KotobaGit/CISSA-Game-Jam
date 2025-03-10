@@ -123,6 +123,5 @@ public class PlayerCollisionManager : MonoBehaviour
     public void PlayerTakeDamage(float damage) // Use this function to make the player take a certain amount of damage
     {
         playerHealth -= damage;
-        
     }
 }
