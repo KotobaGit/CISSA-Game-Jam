@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public Transform suctionPoint;
     private float forceAmount = 50.0f; // The force added to the player in the direction of the suction point (airlock room)
-    private bool suctionForce = true;
+    public bool suctionForce = true;
 
     private void Start()
     {

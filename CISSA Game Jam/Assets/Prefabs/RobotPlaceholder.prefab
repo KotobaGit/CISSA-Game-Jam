@@ -324,8 +324,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.6788118e-14, y: 1.5887337}
-  m_Size: {x: 1.7999872, y: 3.1425328}
+  m_Offset: {x: 3.6788118e-14, y: 3.89}
+  m_Size: {x: 5.04, y: 11.08}
   m_Direction: 0
 --- !u!1 &9168269856253314795
 GameObject:
@@ -468,6 +468,7 @@ MonoBehaviour:
   LookTransform: {fileID: 6492773917767531722}
   moveSpeed: 2.5
   suctionPoint: {fileID: 0}
+  suctionForce: 1
 --- !u!114 &7128016403499544985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,6 +621,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   hudTextComponent: {fileID: 0}
   playerHealth: 99
+  canLeaveRoom: 0
 --- !u!95 &3748531589658425433
 Animator:
   serializedVersion: 7

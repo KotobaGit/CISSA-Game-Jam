@@ -21,6 +21,7 @@ TagManager:
   - SuctionPoint
   - Crate
   - SpawnDoor
+  - DoorToGameWonRoom
   layers:
   - Default
   - TransparentFX

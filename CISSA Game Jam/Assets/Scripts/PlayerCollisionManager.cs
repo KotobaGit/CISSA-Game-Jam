@@ -2,13 +2,14 @@ using NUnit.Framework.Interfaces;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerCollisionManager : MonoBehaviour
 {
     private int buttonsPressed = 0;
-    private int buttonsInRoom = 4; // number of buttons in the generator room
+    private int buttonsInRoom = 5; // number of buttons in the generator room
     public GameObject generatorBarrier1;
     public GameObject generatorBarrier2;
     private SpriteRenderer sr;
@@ -16,7 +17,7 @@ public class PlayerCollisionManager : MonoBehaviour
     public TextMeshProUGUI hudTextComponent;
     [SerializeField] private float playerHealth = 99f; // Players health
 
-    private bool canLeaveRoom = false;
+    public bool canLeaveRoom = false;
     private bool foundAutopilotPassword = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -35,11 +36,15 @@ public class PlayerCollisionManager : MonoBehaviour
         hudTextComponent.text = (Mathf.RoundToInt(playerHealth)).ToString();
 
 
-        if (buttonsPressed == buttonsInRoom) // Destroys the 2 barriers in the generator room when all buttons are pressed
+        if (buttonsPressed >= buttonsInRoom - 1) // Destroys the 2 barriers in the generator room when all buttons are pressed
         {
-            Destroy(generatorBarrier1);
             Destroy(generatorBarrier2);
+            if (buttonsPressed >= buttonsInRoom)
+            {
+                Destroy(generatorBarrier1);
+            }
         }
+
         if (playerHealth <1) // Reloads the current scene if playerhealth falls below 1
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -58,6 +63,7 @@ public class PlayerCollisionManager : MonoBehaviour
                 sr = collision.GetComponent<SpriteRenderer>();
                 sr.color = Color.green; // Sets the button's color to green
                 buttonsPressed += 1;
+                collision.GetComponent<Light2D>().enabled = false;
                 collision.tag = "Untagged"; // Removes the buttons tag, so it cant call this again
                 break;
 
@@ -109,13 +115,19 @@ public class PlayerCollisionManager : MonoBehaviour
 
             case "DoorToCockpitRoom":
                 {
+                    if (canLeaveRoom == true)
+                    {
                     SceneManager.LoadScene("Cockpit Room");
+                    }
                 }
                 break;
 
             case "DoorToAirlockRoom":
                 {
+                    if (canLeaveRoom == true)
+                    {
                     SceneManager.LoadScene("Air Lock Room");
+                    }
                 }
                 break;
 
@@ -130,6 +142,15 @@ public class PlayerCollisionManager : MonoBehaviour
                     PlayerTakeDamage(100);
                 }
                 break;
+            
+            case "DoorToGameWonRoom":
+            {
+                if (canLeaveRoom == true)
+                {
+                    SceneManager.LoadScene("Game Won Scene");
+                }
+                break;
+            }
 
         }
     }
