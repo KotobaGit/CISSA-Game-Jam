@@ -551,17 +551,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0062007904, y: -0.35420138}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.875, y: 1.84375}
+    oldSize: {x: 1.2, y: 1.18}
     newSize: {x: 0.6, y: 0.59}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9, y: 0.91}
+  m_Size: {x: 0.5155529, y: 0.41242322}
   m_EdgeRadius: 0
 --- !u!70 &323051843365498025
 CapsuleCollider2D:
@@ -597,8 +597,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.000000059604645, y: 0}
-  m_Size: {x: 0.72197294, y: 1.2}
+  m_Offset: {x: -0.011060417, y: -0.35330546}
+  m_Size: {x: 0.49338913, y: 0.49338913}
   m_Direction: 0
 --- !u!114 &2005514975154614119
 MonoBehaviour:
@@ -615,3 +615,5 @@ MonoBehaviour:
   generatorBarrier1: {fileID: 0}
   generatorBarrier2: {fileID: 0}
   healthBar: {fileID: 0}
+  hudTextComponent: {fileID: 0}
+  playerHealth: 99

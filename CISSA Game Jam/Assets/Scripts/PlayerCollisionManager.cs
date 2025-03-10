@@ -11,9 +11,9 @@ public class PlayerCollisionManager : MonoBehaviour
     public GameObject generatorBarrier1;
     public GameObject generatorBarrier2;
     private SpriteRenderer sr;
-    public Image healthBar;
+    public Transform healthBar;
     public TextMeshProUGUI hudTextComponent;
-    private float playerHealth = 99f; // Players health
+    [SerializeField] private float playerHealth = 99f; // Players health
 
     private bool canLeaveRoom = false;
     private bool foundAutopilotPassword = false;
@@ -22,7 +22,7 @@ public class PlayerCollisionManager : MonoBehaviour
     {
         if (healthBar == null || hudTextComponent == null)
         {
-            healthBar = GameObject.Find("UI/Health/Health Bar").GetComponent<Image>();
+            healthBar = GameObject.Find("UI/Health/Health Bar").transform;
             hudTextComponent = GameObject.Find("UI/Health/Health Num").GetComponent<TextMeshProUGUI>();
         }
     }
@@ -30,7 +30,7 @@ public class PlayerCollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = playerHealth / 99f;
+        healthBar.localScale = new Vector3((Mathf.Clamp((playerHealth/99f),0f,1f)), 1f, 1f);
         hudTextComponent.text = (Mathf.RoundToInt(playerHealth)).ToString();
 
 
@@ -123,5 +123,6 @@ public class PlayerCollisionManager : MonoBehaviour
     public void PlayerTakeDamage(float damage) // Use this function to make the player take a certain amount of damage
     {
         playerHealth -= damage;
+        Mathf.Clamp(playerHealth, 0f, 99f);
     }
 }
