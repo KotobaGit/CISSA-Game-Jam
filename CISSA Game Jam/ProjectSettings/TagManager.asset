@@ -20,6 +20,7 @@ TagManager:
   - AutopilotPassword
   - SuctionPoint
   - Crate
+  - SpawnDoor
   layers:
   - Default
   - TransparentFX
