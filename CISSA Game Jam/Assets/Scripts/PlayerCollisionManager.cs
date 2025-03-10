@@ -75,7 +75,7 @@ public class PlayerCollisionManager : MonoBehaviour
             case "GenComputer":
                 canLeaveRoom = true;  // Player can interact with the door to the rec room. Add checkmark to journal here
                 //OBJECTIVE 2
-                ObjectivesScript.TickObjective(1, true);
+                ObjectivesScript.TickObjective(0, true);
                 GameObject.Find("GenComputer Text").GetComponent<TextBoxObject>().SendText();
                 break;
 
@@ -89,7 +89,7 @@ public class PlayerCollisionManager : MonoBehaviour
                     GameObject.Find("Computer Text 2").GetComponent<TextBoxObject>().SendText(); // Runs computer text 2 if player found password
                     canLeaveRoom = true; // Player can leave the room if they interact with the autopilot computer after they have found the password on the note. Add checkmark to journal here
                     //OBJECTIVE 3
-                    ObjectivesScript.TickObjective(2, true);
+                    ObjectivesScript.TickObjective(1, true);
                 }
                 break;
 

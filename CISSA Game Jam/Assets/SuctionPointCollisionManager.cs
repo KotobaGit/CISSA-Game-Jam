@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class SuctionPointCollisionManager : MonoBehaviour
 {
+    [SerializeField] private ObjectiveTracker ObjectivesScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ObjectivesScript = GameObject.Find("UI/ObjectiveTracker").GetComponent<ObjectiveTracker>();
     }
 
     // Update is called once per frame
@@ -21,6 +22,8 @@ public class SuctionPointCollisionManager : MonoBehaviour
             GameObject.Find("RobotPlaceholder").GetComponent<PlayerMovement>().suctionForce = false;
             GameObject.Find("RobotPlaceholder").GetComponent<PlayerCollisionManager>().canLeaveRoom = true; 
             GameObject.Find("Fixed Hole Text").GetComponent<TextBoxObject>().SendText();
+            ObjectivesScript.TickObjective(2, true);
+            
         }
     }
 }
