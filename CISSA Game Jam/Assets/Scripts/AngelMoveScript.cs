@@ -8,7 +8,7 @@ public class AngelMoveScript : MonoBehaviour
     public float angelSpeed;
     Rigidbody2D rb;
     public GameObject robot;
-    public Light2D robotTorch;
+    public GameObject robotTorch;
     private bool IsRobotInLight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +36,7 @@ public class AngelMoveScript : MonoBehaviour
         if (collision.CompareTag("RobotTorchLight"))
             {
             IsRobotInLight = true;
+            Debug.Log("Hit torch");
         }
 
     }

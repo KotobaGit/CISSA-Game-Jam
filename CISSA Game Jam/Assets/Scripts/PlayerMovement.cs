@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     [SerializeField] private GameObject PlayerObj; //this is where we set the OBJECT of the player
     [SerializeField] private Rigidbody2D PlayerRb; //this is the rigid body of the player
 
@@ -18,12 +20,21 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
 
+    //the following is for the airlock room
+    private Rigidbody2D rb;
+    public Transform suctionPoint;
+    private float forceAmount = 50.0f; // The force added to the player in the direction of the suction point (airlock room)
+    private bool suctionForce = true;
+
     private void Start()
     {
         //these are set in [edit > project settings > input system package]
 
         moveAction = InputSystem.actions.FindAction("Move");
         lookAction = InputSystem.actions.FindAction("Look");
+
+        //Gets Rigidbody2D
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
@@ -53,5 +64,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerRb.linearVelocity = inputMoveDirection*moveSpeed;
+
+        if (SceneManager.GetActiveScene().name == "Air Lock Room" && suctionForce)
+        {
+            Vector2 direction = (suctionPoint.position - transform.position).normalized;
+            rb.AddForce(direction * forceAmount);
+        }
     }
 }
