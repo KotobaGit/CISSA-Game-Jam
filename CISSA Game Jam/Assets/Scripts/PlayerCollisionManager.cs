@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -62,15 +63,22 @@ public class PlayerCollisionManager : MonoBehaviour
 
             case "AutopilotPassword": // When the player finds the autopilot password note, sets foundAutopilotPassword to true. Add dialogue here
                 foundAutopilotPassword = true;
+                GameObject.Find("Passkey Text").GetComponent<TextBoxObject>().SendText(); // Runs the passkey dialogue
                 break;
 
             case "GenComputer":
                 canLeaveRoom = true;  // Player can interact with the door to the rec room. Add checkmark to journal here
+                GameObject.Find("GenComputer Text").GetComponent<TextBoxObject>().SendText();
                 break;
 
             case "AutopilotComputer":
-                if (foundAutopilotPassword == true)
+                if (!foundAutopilotPassword)
                 {
+                    GameObject.Find("Computer Text 1").GetComponent<TextBoxObject>().SendText(); // Runs computer text 1 if the player hasnt found the password
+                }
+                else if (foundAutopilotPassword == true)
+                {
+                    GameObject.Find("Computer Text 2").GetComponent<TextBoxObject>().SendText(); // Runs computer text 2 if player found password
                     canLeaveRoom = true; // Player can leave the room if they interact with the autopilot computer after they have found the password on the note. Add checkmark to journal here
                 }
                 break;
