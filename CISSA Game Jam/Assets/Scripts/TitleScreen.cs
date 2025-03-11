@@ -6,7 +6,7 @@ public class TitleScreen : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Rec Room");
+        SceneManager.LoadScene("Spawn Room");
     }
 
     public void QuitGame()
