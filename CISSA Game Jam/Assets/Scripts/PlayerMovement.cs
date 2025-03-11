@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D PlayerRb; //this is the rigid body of the player
     [SerializeField] private Animator PlayerAnimator;
 
+    [SerializeField] private AudioClip[] walkSounds;
+    private AudioSource audioSource;
+
     [SerializeField] private Transform LookTransform;
 
     public float moveSpeed = 1.0f; //public incase we want to add things that slow or speed up the player in other scripts
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         //Gets Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
 
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void AnimatorParameterUpdate()
@@ -89,6 +93,14 @@ public class PlayerMovement : MonoBehaviour
         //if the angle between where you are looking to where you want to walk is greater than 90deg then play animation in reverse;
         if (inputMoveDirection.magnitude != 0)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.loop = true;
+                audioSource.clip = walkSounds[Random.Range(0, walkSounds.Length)];
+                audioSource.Play();
+            }
+
+
             PlayerAnimator.SetBool("Walking", true);
             PlayerAnimator.SetFloat("Move Multiplier", inputMoveDirection.magnitude);
             if (Vector2.Angle(inputLookDirection,inputMoveDirection) < 90f)
@@ -98,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            audioSource.Stop();
             PlayerAnimator.SetBool("Walking", false);
         }
     }

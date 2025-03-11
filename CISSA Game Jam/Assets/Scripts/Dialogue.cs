@@ -6,6 +6,8 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     [SerializeField] private GameObject PlayerObj;
+    [SerializeField] private AudioClip[] talkSounds;
+    private AudioSource audioSource;
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
@@ -16,6 +18,7 @@ public class Dialogue : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         if (PlayerObj == null)
         {
             PlayerObj = GameObject.Find("RobotPlaceholder");
@@ -60,6 +63,8 @@ public class Dialogue : MonoBehaviour
     {
         foreach (char c in lines[index].ToCharArray())
         {
+            audioSource.clip = talkSounds[Random.Range(0,talkSounds.Length)];
+            audioSource.Play();
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
