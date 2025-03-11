@@ -12,12 +12,16 @@ public class AngelMoveScript : MonoBehaviour
     private GameObject robotTorch;
     private bool IsRobotInLight;
 
+    [SerializeField] private AudioClip walkSound;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         robot = GameObject.Find("RobotPlaceholder");
         robotTorch = GameObject.Find("RobotPlaceholder/Aiming Placeholder/Torch/RobotTorchLight");
+
+        audioSource = GetComponent<AudioSource>();
 
         rb = GetComponent<Rigidbody2D>();
         IsRobotInLight = false;
@@ -39,10 +43,17 @@ public class AngelMoveScript : MonoBehaviour
         
         if (rb.linearVelocity.magnitude != 0f)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.loop = true;
+                audioSource.clip = walkSound;
+                audioSource.Play();
+            }
             angelAnimator.SetBool("Moving", true);
         }
         else
         {
+            audioSource.Stop();
             angelAnimator.SetBool("Moving", false);
         }
     }
